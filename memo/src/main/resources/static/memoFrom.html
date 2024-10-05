@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>메모 추가</title>
+</head>
+<body>
+<form th:action="@{/memos/add}" th:method="post" th:object="${addMemoRequest}">
+    <label for="content">내용:</label>
+    <input type="text" id="content" name="content" th:field="*{content}" />
+    <input type="submit" value="저장">
+</form>
+</body>
+</html>

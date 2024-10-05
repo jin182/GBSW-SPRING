@@ -1,0 +1,18 @@
+package com.mysite.sbb;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+@Controller
+public class MainController {
+    @GetMapping("/sbb")
+    @ResponseBody
+    public String index() {
+        return "index";
+    }
+    @GetMapping("/test/{path}")
+    @ResponseBody
+    public String testPath(@PathVariable("path") String path) {
+    	return path;
+    }
+}
