@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="formErrorsFragment" class="alert alert-danger" role="alert" th:if="${#fields.hasAnyErrors()}">
+  <div th:each="err : ${#fields.allErrors()}" th:text="${err}">
+    입력한 내용을 확인해 주세요.
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html
+        lang="ko"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+<head>
+    <title th:text="|Question-${question.subject}|"></title>
+</head>
+<body>
+<div layout:fragment="content" class="container m-3">
+    <h2 class="border-bottom py-2" th:text="${question.subject}"></h2>
+    <div class="mb-2">
+        <span th:if="${question.author!=null}" th:text="${question.author.username}"></span>
+    </div>
+    <div>
+    </div>
+    <p th:text="${question.content}"></p>
+    <h5 class="border-bottom my-3 py-2" th:text="|${#lists.size(question.answers)}개의 답변이 있습니다.|"></h5>
+    <ul>
+        <li th:each="answer: ${question.answers}">
+            <div>
+                <span th:text="${answer.content}"></span>
+                <span th:if="${answer.user!=null}"
+                      th:text="| - ${answer.user.username}|">
+                </span>
+            </div>
+        </li>
+    </ul>
+    <form th:action="@{|/answer/create/${question.id}|}" method="post">
+        <textarea class="form-control" name="content"></textarea>
+        <input class="btn btn-primary my-2" type="submit" value="답변 등록">
+    </form>
+</div>
+</body>
+</html>
